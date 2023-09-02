@@ -26,8 +26,7 @@ function generatemulti_noisyTable(tableId, filenames, page) {
   for (let i = 1; i < nrRows; i++) {
     table.deleteRow(1);
   }
-  const prefix = 'multi-noisy/';
-  const prefix_spec = "noisy_melspec/"
+  const prefix = 'multi_noisy_spec_wav/';
   const end_idx = page * numPerPage;
   for (let i = (page - 1) * numPerPage; i < end_idx; i++) {
     // for each i, insert two rows
@@ -45,41 +44,44 @@ function generatemulti_noisyTable(tableId, filenames, page) {
       //cell.innerHTML = command.replaceAll('_', ' ');
       //cell.innerHTML = filenames[i]
       //cell.innerHTML = prefix + filenames[i].replace("samples/","samples/mixture_")+".wav"
-      cell.innerHTML = prefix_spec.replace("melspec/","melspec/gt_") + filenames[i].replace("noisy_female-male-samples/","").replace("noisy_female-female-samples/","").replace("noisy_male-male-samples/","")+".png"
+      cell.innerHTML = filenames[i]
       cell.style.textAlign = "center";
       cell2.innerHTML = " "
       cell2.style.textAlign = "center";
 
       cell = row.insertCell(1);
       cell2 = row2.insertCell(1)
-      //cell2.innerHTML = createFigureHTML("noisy_melspec/gt_1089-134686-0007_1995-1836-0000.png",true)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/mixture_") + filenames[i].replace("noisy_female-male-samples/","").replace("noisy_female-female-samples/","").replace("noisy_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "mixture_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/mixture_")+".wav", false);
-      //cell.innerHTML = createAudioHTML("leying_wav_path.wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"mixture_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
 
       cell = row.insertCell(2);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/gt_")+".wav", false);
       cell2 = row2.insertCell(2)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/gt_") + filenames[i].replace("noisy_female-male-samples/","").replace("noisy_female-female-samples/","").replace("noisy_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
-      cell.style.textAlign = "center";
+      cell2.innerHTML = createFigureHTML(prefix+ "gt_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"gt_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
 
       cell = row.insertCell(3);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/DDCEM_")+".wav", false);
       cell2 = row2.insertCell(3)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/DDCEM_") + filenames[i].replace("noisy_female-male-samples/","").replace("noisy_female-female-samples/","").replace("noisy_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "DDCEM_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      //cell.innerHTML = createAudioHTML("leying_wav_path.wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"DDCEM_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
 
       cell = row.insertCell(4);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/DPCCN_")+".wav", false);
       cell2 = row2.insertCell(4)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/DPCCN_") + filenames[i].replace("noisy_female-male-samples/","").replace("noisy_female-female-samples/","").replace("noisy_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "DPCCN_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      //cell.innerHTML = createAudioHTML("leying_wav_path.wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"DPCCN_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(5);
+      cell2 = row2.insertCell(5)
+      cell2.innerHTML = createFigureHTML(prefix+ "DiffSep_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"DiffSep_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
     } else {
       let cell = row.insertCell(0);
@@ -94,6 +96,9 @@ function generatemulti_noisyTable(tableId, filenames, page) {
       cell.innerHTML = '<br>';
       cell.style.textAlign = "center";
       cell = row.insertCell(4);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(5);
       cell.innerHTML = '<br>';
       cell.style.textAlign = "center";
     }
@@ -108,8 +113,7 @@ function generatemulti_cleanTable(tableId, filenames, page) {
   for (let i = 1; i < nrRows; i++) {
     table.deleteRow(1);
   }
-  const prefix = 'multi-clean/';
-  const prefix_spec = "clean_melspec/"
+  const prefix = 'multi_clean_spec_wav/';
   const end_idx = page * numPerPage;
   for (let i = (page - 1) * numPerPage; i < end_idx; i++) {
     // for each i, insert two rows
@@ -127,41 +131,44 @@ function generatemulti_cleanTable(tableId, filenames, page) {
       //cell.innerHTML = command.replaceAll('_', ' ');
       //cell.innerHTML = filenames[i]
       //cell.innerHTML = prefix + filenames[i].replace("samples/","samples/mixture_")+".wav"
-      cell.innerHTML = prefix_spec.replace("melspec/","melspec/gt_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","")+".png"
+      cell.innerHTML = prefix.replace("melspec/","melspec/gt_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","")+".png"
       cell.style.textAlign = "center";
       cell2.innerHTML = " "
       cell2.style.textAlign = "center";
 
       cell = row.insertCell(1);
       cell2 = row2.insertCell(1)
-      //cell2.innerHTML = createFigureHTML("noisy_melspec/gt_1089-134686-0007_1995-1836-0000.png",true)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/mixture_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "mixture_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/mixture_")+".wav", false);
-      //cell.innerHTML = createAudioHTML("leying_wav_path.wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"mixture_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
 
       cell = row.insertCell(2);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/gt_")+".wav", false);
       cell2 = row2.insertCell(2)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/gt_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
-      cell.style.textAlign = "center";
+      cell2.innerHTML = createFigureHTML(prefix+ "gt_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"gt_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
 
       cell = row.insertCell(3);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/DDCEM_")+".wav", false);
       cell2 = row2.insertCell(3)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/DDCEM_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "DDCEM_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      //cell.innerHTML = createAudioHTML("leying_wav_path.wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"DDCEM_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
 
       cell = row.insertCell(4);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i].replace("samples/","samples/DPCCN_")+".wav", false);
       cell2 = row2.insertCell(4)
-      cell2.innerHTML = createFigureHTML(prefix_spec.replace("melspec/","melspec/DPCCN_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","").replace("melspec/","melspec/mixture_")+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "DPCCN_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      //cell.innerHTML = createAudioHTML("leying_wav_path.wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"DPCCN_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(5);
+      cell2 = row2.insertCell(5)
+      cell2.innerHTML = createFigureHTML(prefix+ "DiffSep_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"DiffSep_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
     } else {
       let cell = row.insertCell(0);
@@ -178,6 +185,9 @@ function generatemulti_cleanTable(tableId, filenames, page) {
       cell = row.insertCell(4);
       cell.innerHTML = '<br>';
       cell.style.textAlign = "center";
+      cell = row.insertCell(5);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
     }
   }
 }
@@ -185,6 +195,91 @@ function generatemulti_cleanTable(tableId, filenames, page) {
 
 
 
+function generatesingle_noisyTable(tableId, filenames, page) {
+  let numPerPage = 3;
+  let table = document.getElementById(tableId + '-operation');
+  let nrRows = table.rows.length;
+  for (let i = 1; i < nrRows; i++) {
+    table.deleteRow(1);
+  }
+  const prefix = 'single_enh_spec_wav/';
+  const end_idx = page * numPerPage;
+  for (let i = (page - 1) * numPerPage; i < end_idx; i++) {
+    // for each i, insert two rows
+    //let row = table.insertRow(i % numPerPage + 1);
+    let row = table.insertRow((i % numPerPage) *2 + 1);
+    let row2 = table.insertRow((i % numPerPage*2) + 2);
+    
+    row.style.height = '80px';
+    //row2.style.height = '80px';
+    if (i < filenames.length) {
+      let cell = row.insertCell(0);
+      let cell2 = row2.insertCell(0)
+      let reg = /[0-9]+/g;
+      let command = filenames[i].replace(reg,"");
+      //cell.innerHTML = command.replaceAll('_', ' ');
+      //cell.innerHTML = filenames[i]
+      //cell.innerHTML = prefix + filenames[i].replace("samples/","samples/mixture_")+".wav"
+      cell.innerHTML = filenames[i]
+      cell.style.textAlign = "center";
+      cell2.innerHTML = " "
+      cell2.style.textAlign = "center";
+
+      cell = row.insertCell(1);
+      cell2 = row2.insertCell(1)
+      cell2.innerHTML = createFigureHTML(prefix+ "mixture_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"mixture_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(2);
+      cell2 = row2.insertCell(2)
+      cell2.innerHTML = createFigureHTML(prefix+ "gt_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"gt_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(3);
+      cell2 = row2.insertCell(3)
+      cell2.innerHTML = createFigureHTML(prefix+ "DDCEM_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"DDCEM_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(4);
+      cell2 = row2.insertCell(4)
+      cell2.innerHTML = createFigureHTML(prefix+ "DCCRN_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"DCCRN_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+
+      cell = row.insertCell(5);
+      cell2 = row2.insertCell(5)
+      cell2.innerHTML = createFigureHTML(prefix+ "SGMSE_" + filenames[i]+".png", true)
+      cell2.style.textAlign = "center";
+      cell.innerHTML = createAudioHTML(prefix +"SGMSE_"+ filenames[i]+".wav", false);
+      cell.style.textAlign = "center";
+    } else {
+      let cell = row.insertCell(0);
+      cell.innerHTML = '<br>';
+      cell = row.insertCell(1);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(2);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(3);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(4);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+      cell = row.insertCell(5);
+      cell.innerHTML = '<br>';
+      cell.style.textAlign = "center";
+    }
+  }
+}
 
 function generateEditTable(tableId, filenames, page) {
   let numPerPage = 4;
@@ -807,31 +902,35 @@ melody_t = ['菊花台', '麦浪', '月亮不曾奔我而来', 'Lover']
 // generateEditTable('add', add  , 1);
 
 pagelist = ["noisy_female-male-samples","noisy_male-male-samples","noisy_female-female-samples"]
-noisy_filelist = ["noisy_female-male-samples/1089-134686-0007_1995-1836-0000","noisy_female-male-samples/2300-131720-0041_1284-1180-0023","noisy_female-male-samples/5142-36377-0005_6930-81414-0019","noisy_male-male-samples/1089-134686-0007_7021-85628-0018","noisy_male-male-samples/2300-131720-0036_7176-92135-0006","noisy_male-male-samples/5105-28240-0017_6930-81414-0015","noisy_female-female-samples/121-127105-0011_4970-29095-0009","noisy_female-female-samples/121-127105-0028_4507-16021-0025","noisy_female-female-samples/6829-68769-0012_1284-1181-0001"]
+//noisy_filelist = ["noisy_female-male-samples/1089-134686-0007_1995-1836-0000","noisy_female-male-samples/2300-131720-0041_1284-1180-0023","noisy_female-male-samples/5142-36377-0005_6930-81414-0019","noisy_male-male-samples/1089-134686-0007_7021-85628-0018","noisy_male-male-samples/2300-131720-0036_7176-92135-0006","noisy_male-male-samples/5105-28240-0017_6930-81414-0015","noisy_female-female-samples/121-127105-0011_4970-29095-0009","noisy_female-female-samples/121-127105-0028_4507-16021-0025","noisy_female-female-samples/6829-68769-0012_1284-1181-0001"]
+noisy_filelist = ["1089-134686-0007_1995-1836-0000","2300-131720-0041_1284-1180-0023","5142-36377-0005_6930-81414-0019","1089-134686-0007_7021-85628-0018","2300-131720-0036_7176-92135-0006","5105-28240-0017_6930-81414-0015","121-127105-0011_4970-29095-0009","121-127105-0028_4507-16021-0025","6829-68769-0012_1284-1181-0001"]
 generatemulti_noisyTable('leying', noisy_filelist  , 1);
 
 
-clean_filelist = ["clean_female-male-samples/2830-3980-0072_3575-170457-0021","clean_female-male-samples/4992-41806-0015_260-123440-0020","clean_female-male-samples/5142-36377-0002_6930-75918-0002","clean_male-male-samples/1089-134691-0025_8224-274384-0005","clean_male-male-samples/260-123286-0023_2830-3980-0030","clean_male-male-samples/8224-274381-0013_1320-122617-0013","clean_female-female-samples/121-127105-0011_4970-29095-0009","clean_female-female-samples/3575-170457-0009_8555-284447-0023","clean_female-female-samples/8555-284447-0004_5683-32879-0000"]
+//clean_filelist = ["clean_female-male-samples/2830-3980-0072_3575-170457-0021","clean_female-male-samples/4992-41806-0015_260-123440-0020","clean_female-male-samples/5142-36377-0002_6930-75918-0002","clean_male-male-samples/1089-134691-0025_8224-274384-0005","clean_male-male-samples/260-123286-0023_2830-3980-0030","clean_male-male-samples/8224-274381-0013_1320-122617-0013","clean_female-female-samples/121-127105-0011_4970-29095-0009","clean_female-female-samples/3575-170457-0009_8555-284447-0023","clean_female-female-samples/8555-284447-0004_5683-32879-0000"]
+clean_filelist = ["2830-3980-0072_3575-170457-0021","4992-41806-0015_260-123440-0020","5142-36377-0002_6930-75918-0002","1089-134691-0025_8224-274384-0005","260-123286-0023_2830-3980-0030","8224-274381-0013_1320-122617-0013","121-127105-0011_4970-29095-0009","3575-170457-0009_8555-284447-0023","8555-284447-0004_5683-32879-0000"]
 generatemulti_cleanTable('leying-clean', clean_filelist  , 1);
 
 
+enh_filelist =  ['1089-134686-0034_5639-40744-0005','1320-122617-0021_5105-28233-0002','2830-3980-0052_8455-210777-0035']
+generatesingle_noisyTable('leying-enh', enh_filelist  , 1);
 
 
-generateEditTable('remove', remove  , 1);
-generateEditTable('extract', extract  , 1);
-generateEditTable('replace', replace  , 1);
+// generateEditTable('remove', remove  , 1);
+// generateEditTable('extract', extract  , 1);
+// generateEditTable('replace', replace  , 1);
 
-generateRemixTable('instr', instr  , 1);
-generateRemixTable('genre', genre  , 1); 
-generateRemixGuideTable('soft', soft  , 1);
-generateRemixGuideTable('happy', happy  , 1);
-generateDiversityTable('dedit', dedit  , 1);
-generateDiversityRemixTable('dremix', dremix  , 1);
-generateDiversityTable('sedit', sedit  , 1);
-generateRealTable('real', real, title, 1);
-generateRealTable('melody', melody, melody_t, 1);
-generateMultiTable('multi', multi  , 1);
-generateLongTable('long', long  , 1);
+// generateRemixTable('instr', instr  , 1);
+// generateRemixTable('genre', genre  , 1); 
+// generateRemixGuideTable('soft', soft  , 1);
+// generateRemixGuideTable('happy', happy  , 1);
+// generateDiversityTable('dedit', dedit  , 1);
+// generateDiversityRemixTable('dremix', dremix  , 1);
+// generateDiversityTable('sedit', sedit  , 1);
+// generateRealTable('real', real, title, 1);
+// generateRealTable('melody', melody, melody_t, 1);
+// generateMultiTable('multi', multi  , 1);
+// generateLongTable('long', long  , 1);
 
 $(document).ready(function() {
   for (let i = 1; i <= 3; i++) {
@@ -862,187 +961,187 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function() {
-  for (let i = 1; i <= 3; i++) {
-    let id = '#remove-operation-' + i;
-    $(id).click(function() {
-      generateEditTable(
-          'remove',
-          remove, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 3; i++) {
-    let id = '#extract-operation-' + i;
-    $(id).click(function() {
-      generateEditTable(
-          'extract',
-          extract, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 3; i++) {
-    let id = '#replace-operation-' + i;
-    $(id).click(function() {
-      generateEditTable(
-          'replace',
-          replace, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 3; i++) {
-    let id = '#instr-operation-' + i;
-    $(id).click(function() {
-      generateRemixTable(
-          'instr',
-          instr, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 3; i++) {
-    let id = '#genre-operation-' + i;
-    $(id).click(function() {
-      generateRemixTable(
-          'genre',
-          genre, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 1; i++) {
-    let id = '#soft-operation-' + i;
-    $(id).click(function() {
-      generateRemixGuideTable(
-          'soft',
-          soft, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 1; i++) {
-    let id = '#happy-operation-' + i;
-    $(id).click(function() {
-      generateRemixGuideTable(
-          'happy',
-          happy, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 2; i++) {
-    let id = '#dedit-operation-' + i;
-    $(id).click(function() {
-      generateDiversityTable(
-          'dedit',
-          dedit, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 2; i++) {
-    let id = '#dremix-operation-' + i;
-    $(id).click(function() {
-      generateDiversityRemixTable(
-          'dremix',
-          dremix, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-
-$(document).ready(function() {
-  for (let i = 1; i <= 2; i++) {
-    let id = '#sedit-operation-' + i;
-    $(id).click(function() {
-      generateDiversityTable(
-          'sedit',
-          sedit, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-$(document).ready(function() {
-  for (let i = 1; i <= 3; i++) {
-    let id = '#real-operation-' + i;
-    $(id).click(function() {
-      generateRealTable(
-          'real',
-          real, title, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-
-$(document).ready(function() {
-  for (let i = 1; i <= 1; i++) {
-    let id = '#multi-operation-' + i;
-    $(id).click(function() {
-      generateMultiTable(
-          'multi',
-          multi, i);
-      $(id).parent().siblings().removeClass('active');
-      $(id).parent().addClass('active');
-      return false;
-    });
-  }
-});
-
-
 // $(document).ready(function() {
-//   for (let i = 1; i <= 1; i++) {
-//     let id = '#long-operation-' + i;
+//   for (let i = 1; i <= 3; i++) {
+//     let id = '#remove-operation-' + i;
 //     $(id).click(function() {
-//       generateLongTable(
-//           'long',
-//           long, i);
+//       generateEditTable(
+//           'remove',
+//           remove, i);
 //       $(id).parent().siblings().removeClass('active');
 //       $(id).parent().addClass('active');
 //       return false;
 //     });
 //   }
 // });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 3; i++) {
+//     let id = '#extract-operation-' + i;
+//     $(id).click(function() {
+//       generateEditTable(
+//           'extract',
+//           extract, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 3; i++) {
+//     let id = '#replace-operation-' + i;
+//     $(id).click(function() {
+//       generateEditTable(
+//           'replace',
+//           replace, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 3; i++) {
+//     let id = '#instr-operation-' + i;
+//     $(id).click(function() {
+//       generateRemixTable(
+//           'instr',
+//           instr, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 3; i++) {
+//     let id = '#genre-operation-' + i;
+//     $(id).click(function() {
+//       generateRemixTable(
+//           'genre',
+//           genre, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 1; i++) {
+//     let id = '#soft-operation-' + i;
+//     $(id).click(function() {
+//       generateRemixGuideTable(
+//           'soft',
+//           soft, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 1; i++) {
+//     let id = '#happy-operation-' + i;
+//     $(id).click(function() {
+//       generateRemixGuideTable(
+//           'happy',
+//           happy, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 2; i++) {
+//     let id = '#dedit-operation-' + i;
+//     $(id).click(function() {
+//       generateDiversityTable(
+//           'dedit',
+//           dedit, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 2; i++) {
+//     let id = '#dremix-operation-' + i;
+//     $(id).click(function() {
+//       generateDiversityRemixTable(
+//           'dremix',
+//           dremix, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 2; i++) {
+//     let id = '#sedit-operation-' + i;
+//     $(id).click(function() {
+//       generateDiversityTable(
+//           'sedit',
+//           sedit, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 3; i++) {
+//     let id = '#real-operation-' + i;
+//     $(id).click(function() {
+//       generateRealTable(
+//           'real',
+//           real, title, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+
+// $(document).ready(function() {
+//   for (let i = 1; i <= 1; i++) {
+//     let id = '#multi-operation-' + i;
+//     $(id).click(function() {
+//       generateMultiTable(
+//           'multi',
+//           multi, i);
+//       $(id).parent().siblings().removeClass('active');
+//       $(id).parent().addClass('active');
+//       return false;
+//     });
+//   }
+// });
+
+
+// // $(document).ready(function() {
+// //   for (let i = 1; i <= 1; i++) {
+// //     let id = '#long-operation-' + i;
+// //     $(id).click(function() {
+// //       generateLongTable(
+// //           'long',
+// //           long, i);
+// //       $(id).parent().siblings().removeClass('active');
+// //       $(id).parent().addClass('active');
+// //       return false;
+// //     });
+// //   }
+// // });
