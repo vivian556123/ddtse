@@ -131,7 +131,7 @@ function generatemulti_cleanTable(tableId, filenames, page) {
       //cell.innerHTML = command.replaceAll('_', ' ');
       //cell.innerHTML = filenames[i]
       //cell.innerHTML = prefix + filenames[i].replace("samples/","samples/mixture_")+".wav"
-      cell.innerHTML = prefix.replace("melspec/","melspec/gt_") + filenames[i].replace("clean_female-male-samples/","").replace("clean_female-female-samples/","").replace("clean_male-male-samples/","")+".png"
+      cell.innerHTML = filenames[i]
       cell.style.textAlign = "center";
       cell2.innerHTML = " "
       cell2.style.textAlign = "center";
@@ -220,7 +220,7 @@ function generatesingle_noisyTable(tableId, filenames, page) {
       //cell.innerHTML = command.replaceAll('_', ' ');
       //cell.innerHTML = filenames[i]
       //cell.innerHTML = prefix + filenames[i].replace("samples/","samples/mixture_")+".wav"
-      cell.innerHTML = filenames[i]
+      cell.innerHTML = filenames[i].split("_")[0]
       cell.style.textAlign = "center";
       cell2.innerHTML = " "
       cell2.style.textAlign = "center";
