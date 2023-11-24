@@ -80,9 +80,9 @@ function generatemulti_noisyTable(tableId, filenames, page) {
 
       cell = row.insertCell(5);
       cell2 = row2.insertCell(5)
-      cell2.innerHTML = createFigureHTML(prefix+ "DiffSep_" + filenames[i]+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "RDDCEM_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      cell.innerHTML = createAudioHTML(prefix +"DiffSep_"+ filenames[i]+".wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"RDDCEM_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
     } else {
       let cell = row.insertCell(0);
@@ -167,9 +167,9 @@ function generatemulti_cleanTable(tableId, filenames, page) {
 
       cell = row.insertCell(5);
       cell2 = row2.insertCell(5)
-      cell2.innerHTML = createFigureHTML(prefix+ "DiffSep_" + filenames[i]+".png", true)
+      cell2.innerHTML = createFigureHTML(prefix+ "RDDCEM_" + filenames[i]+".png", true)
       cell2.style.textAlign = "center";
-      cell.innerHTML = createAudioHTML(prefix +"DiffSep_"+ filenames[i]+".wav", false);
+      cell.innerHTML = createAudioHTML(prefix +"RDDCEM_"+ filenames[i]+".wav", false);
       cell.style.textAlign = "center";
     } else {
       let cell = row.insertCell(0);

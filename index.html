@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DCEM-demo-TSE</title>
+    <title>ProTSE</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -185,11 +185,12 @@
   <body>
     <div class="content">
       <div class="text-center">
-        <h1><strong>Diffusion Conditional Expectation Model  <br>
-          for Efficient and Robust Target Speech Extraction</strong></h1>
+        <h1><strong>ProTSE: Progressive Diffusion Model
+           <br>
+          for High-Quality Target Speech Extraction </strong></h1>
         <h5></h5> 
-        <span style="font-size: 20px">Leying Zhang<sup>1,2</sup>, Yao Qian<sup>2</sup>, Linfeng Yu<sup>1</sup>, Heming Wang<sup>3</sup>, Xinkai Wang<sup>1</sup>, <br> Hemin Yang<sup>2</sup>,  Long Zhou<sup>2</sup>, Shujie Liu<sup>2</sup>, Yanmin Qian<sup>1</sup>, Michael Zeng<sup>2</sup></span></p>
-        <span style="font-size: 18px"><sup>1</sup>Shanghai Jiao Tong University, China  &emsp;  <sup>2</sup>Microsoft, USA  &emsp; <sup>3</sup>The Ohio State University, USA </span></p>
+        <span style="font-size: 20px">Leying Zhang<sup>1,2</sup>, Yao Qian<sup>2</sup>, Linfeng Yu<sup>1</sup>, <br>  Long Zhou<sup>2</sup>, Shujie Liu<sup>2</sup>, Yanmin Qian<sup>1</sup>, Michael Zeng<sup>2</sup></span></p>
+        <span style="font-size: 18px"><sup>1</sup>Shanghai Jiao Tong University, China  &emsp;  <sup>2</sup>Microsoft, USA </p>
         
         <!-- <p class="lead fw-bold">
           |<a
@@ -203,7 +204,7 @@
         <!-- <h4 style="text-align:center;">[<a href="#">Paper</a>] [<a href="pdfs/appendix.pdf">Appendix</a>]</h4> -->
         <h2 style="text-align:center;">Abstract</h2>
         <div style="text-align: justify;">
-          Target Speech Extraction (TSE) is a crucial task in speech processing that focuses on isolating the clean speech of a specific speaker from complex mixtures. While discriminative methods are commonly used for TSE, they can introduce distortion in terms of speech perception quality. On the other hand, generative approaches, particularly diffusion-based methods, can enhance speech quality perceptually but suffer from slower inference speed. We propose an efficient generative approach named Diffusion Conditional Expectation Model (DCEM) for TSE. It can handle multi- and single-speaker scenarios in both noisy and clean conditions. Additionally, we introduce Regenerate-DCEM (R-DCEM) that can regenerate and optimize speech quality based on pre-processed speech from a discriminative model. Our method outperforms conventional methods in terms of both intrusive and non-intrusive metrics and demonstrates notable strengths in inference efficiency and robustness to unseen tasks.       </div>
+          Target Speech Extraction (TSE) is an essential task in speech processing aimed at isolating clean speech of a specific speaker from complex acoustic mixtures. Despite advancements in TSE, existing methods face challenges:  discriminative methods, while effective, often result in perceptually unnatural speech, whereas generative approaches, notably diffusion-based methods, offer better speech quality but at the cost of slower inference speeds. Addressing these issues, we propose Progressive Diffusion Model (ProTSE), an innovative generative approach that leverages parameterization techniques to directly predict clean data. Additionally, ProTSE offers two distinct usage modes for versatility: ProTSE-only mode provides robust end-to-end TSE, whereas X+ProTSE mode enhances pre-processed speech from discriminative models, thus broadening its applicability. Experimental results show that ProTSE achieves higher perceptual quality in noisy scenarios and accelerates inference speed 2x compared to existing diffusion-based methods.       </div>
       </p>
     </div>
 
@@ -214,9 +215,9 @@
       <div style="text-align: justify;">
       Mixture: The input multi-speaker mixture with background noise. <br>
       Ground Truth: The clean speech of the target speaker. <br>
-      DCEM: Extraction results of our proposed DCEM method. <br>
+      ProTSE-only: Extraction results of our proposed ProTSE-only method. <br>
       DPCCN: Extraction results of discriminative DPCCN method. <br>
-      DiffSep+SV: Extraction results of diffusion-based DiffSep+SV method. <br>
+      DPCCN+ProTSE: Extraction results of DPCCN+ProTSE method. <br>
       We also provide the corresponding mel spectrogram of each audio file for better visualization.
       <!-- Input is command text and source music, output is edited music -->
     </div>
@@ -244,9 +245,9 @@
               <th>WAV_ID</th>
               <th style="text-align: center;">Mixture</th>
               <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">DCEM</th>
+              <th style="text-align: center">ProTSE-only</th>
               <th style="text-align: center">DPCCN</th>
-              <th style="text-align: center">DiffSep+SV</th>
+              <th style="text-align: center">DPCCN+ProTSE</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -260,9 +261,9 @@
       <div style="text-align: justify;">
       Mixture: The input multi-speaker mixture without background noise. <br>
       Ground Truth: The clean speech of the target speaker. <br>
-      DCEM: Extraction results of our proposed DCEM method. <br>
+      ProTSE-only: Extraction results of our proposed ProTSE-only method. <br>
       DPCCN: Extraction results of discriminative DPCCN method. <br>
-      DiffSep+SV: Extraction results of diffusion-based DiffSep+SV method. <br>
+      DPCCN+ProTSE: Extraction results of diffusion-based DPCCN+ProTSE method. <br>
       We also provide the corresponding mel spectrogram of each audio file for better visualization.
       <!-- Input is command text and source music, output is edited music -->
     </div>
@@ -290,9 +291,9 @@
               <th>WAV_ID</th>
               <th style="text-align: center;">Mixture</th>
               <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">DCEM</th>
+              <th style="text-align: center">ProTSE-only</th>
               <th style="text-align: center">DPCCN</th>
-              <th style="text-align: center">DiffSep+SV</th>
+              <th style="text-align: center">DPCCN+ProTSE</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -306,7 +307,7 @@
     <div style="text-align: justify;">
     Mixture: The input noisy single-speaker speech. <br>
     Ground Truth: The clean speech of the target speaker. <br>
-    DCEM: Enhancement results of our proposed DCEM method. <br>
+    ProTSE-only: Enhancement results of our proposed ProTSE-only method. <br>
     DCCRN: Enhancement results of discriminative DPCCN method. <br>
     SGMSE+: Enhancement results of diffusion based SGMSE+ method. <br>
     We also provide the corresponding mel spectrogram of each audio file for better visualization.
@@ -330,7 +331,7 @@
             <th>WAV_ID</th>
             <th style="text-align: center;">Mixture</th>
             <th style="text-align: center">Ground Truth</th>
-            <th style="text-align: center">DCEM</th>
+            <th style="text-align: center">ProTSE-only</th>
             <th style="text-align: center">DCCRN</th>
             <th style="text-align: center">SGMSE+</th>
           </tr>
